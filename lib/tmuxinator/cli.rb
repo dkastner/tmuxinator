@@ -127,11 +127,19 @@ module Tmuxinator
 
       def update_scripts
         Dir["#{root_dir}*.tmux"].each {|p| FileUtils.rm(p) }
+        Dir["#{root_dir}*.AppleScript"].each {|p| FileUtils.rm(p) }
+
         aliases = []
         Dir["#{root_dir}*.yml"].each do |path|
           aliases << Tmuxinator::ConfigWriter.new(path).write!
         end
         Tmuxinator::ConfigWriter.write_aliases(aliases)
+
+        iterm_aliases = []
+        Dir["#{root_dir}*.yml"].each do |path|
+          iterm_aliases << Tmuxinator::ITermConfigWriter.new(path).write!
+        end
+        Tmuxinator::ITermConfigWriter.write_aliases(iterm_aliases)
       end
 
       def doctor
