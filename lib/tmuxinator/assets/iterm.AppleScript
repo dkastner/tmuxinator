@@ -18,13 +18,13 @@ tell application "iTerm"
 
       tell <%= session %>
         <% if tab.command %>
-          write text "<%= tab.command %>"
+          write text "cd <%= @project_root %> && <%= tab.command %>"
         <% elsif tab.panes %>
           -- tmux select-layout -t <%= window(i+1) %> <%=s tab.layout %>
-          write text "<%= tab.panes.shift %>"
+          write text "cd <%= @project_root %> && <%= tab.panes.shift %>"
           <% tab.panes.each do |pane| %>
             tell application "System Events" to keystroke "d" using command down
-            write text "<%= pane %>"
+            write text "cd <%= @project_root %> && <%= pane %>"
           <% end %>
         <% end %>
       end tell
