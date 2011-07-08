@@ -36,14 +36,5 @@ module Tmuxinator
     def write_alias(stuff)
       File.open("#{root_dir}scripts/#{@filename}", 'w') {|f| f.write(stuff) }
     end
-
-    def send_keys(cmd, window_number)
-      return '' unless cmd
-      "tmux send-keys -t #{window(window_number)} #{s cmd} C-m"
-      return <<-APPLESCRIPT
-      tell item <%= window_number %> of 
-      %Q{tell application "System Events" to keystroke "#{cmd}"}
-      APPLESCRIPT
-    end
   end
 end
