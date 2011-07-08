@@ -133,13 +133,11 @@ module Tmuxinator
         Dir["#{root_dir}*.yml"].each do |path|
           aliases << Tmuxinator::ConfigWriter.new(path).write!
         end
-        Tmuxinator::ConfigWriter.write_aliases(aliases)
 
-        iterm_aliases = []
         Dir["#{root_dir}*.yml"].each do |path|
-          iterm_aliases << Tmuxinator::ITermConfigWriter.new(path).write!
+          aliases << Tmuxinator::ITermConfigWriter.new(path).write!
         end
-        Tmuxinator::ITermConfigWriter.write_aliases(iterm_aliases)
+        Tmuxinator::ConfigWriter.write_aliases(aliases)
       end
 
       def doctor

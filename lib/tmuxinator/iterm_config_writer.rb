@@ -24,7 +24,7 @@ module Tmuxinator
       erb         = ERB.new(IO.read(ITERM_TEMPLATE)).result(binding)
       tmp         = File.open(config_path, 'w') {|f| f.write(erb) }
 
-      "alias start_#{file_name}='$SHELL #{config_path}'"
+      "alias iterm_#{file_name}='cat #{config_path} | osascript'"
     end
 
     def config_path
