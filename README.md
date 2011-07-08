@@ -1,15 +1,14 @@
 # Tmuxinator
 
-Create and manage tmux sessions easily. Inspired by Jon Druse's ([Screeninator](https://github.com/jondruse/screeninator)) and Arthur Chiu's ([Terminitor](http://github.com/achiu/terminitor))
+Create and manage tmux and iTerm2 sessions easily. Fork of ([Tmuxinator](https://github.com/aziz/tmuxinator)).
 
-## Example
-
-![Sample](http://f.cl.ly/items/3e3I1l1t3D2U472n1h0h/Screen%20shot%202010-12-10%20at%2010.59.17%20PM.png)
-
+Note: while [Terminitor](http://github.com/achiu/terminitor) has iTerm support, it relies on sending keypresses to iTerm. This project uses AppleScript and can, therefore, connect with iTerm on a deeper level. I also like tmuxinator's config format and it's nice to have one config that can be used on a Mac or a non-GUI'd machine.
 
 ## Installation
 
-    $ gem install tmuxinator
+    $ gem install dkastner-tmuxinator
+
+Note: This fork plays well with existing tmuxinator installs.
 
 Then follow the instructions.  You just have to drop a line in your ~/.bashrc file, similar to RVM if you've used that before:
 
@@ -21,10 +20,10 @@ tmuxinator uses your shell's default editor for opening files.  If you're not su
 
     $ echo $EDITOR
 
-For me that produces "mate -w"
-If you want to change your default editor simple put a line in ~/.bashrc that changes it. Mine looks like this:
+For me that produces "vim"
+If you want to change your default editor simple put a line in ~/.bash_profile that changes it. Mine looks like this:
 
-    export EDITOR='mate -w'
+    export EDITOR='vim'
 
 It also uses $SHELL variable. which is always set by your shell.
 
@@ -63,7 +62,7 @@ Create or edit your projects with this command, for editing you can also use `tm
 If a tab contains multiple commands, they will be 'joined' together with '&&'.
 If you want to have your own default config, place it into $HOME/.tmuxinator/default.yml
 
-The `pre` command allows you to run anything before starting the tmux session. Could be handy to make sure you database daemons are running. Multiple commands can be specified, just like for tabs.
+The `pre` command allows you to run anything before starting the tmux/iTerm session. Could be handy to make sure you database daemons are running. Multiple commands can be specified, just like for tabs.
 
 ## Panes Support
 you can define your own panes inside a window likes this:
@@ -82,6 +81,10 @@ you can define your own panes inside a window likes this:
 
 This will fire up tmux with all the tabs you configured.
 
+    $ iterm_project_name
+
+This will fire up iTerm with all the tabs you configured.
+
 ### Limitations ###
 
 After you create a project, you will have to open a new shell window. This is because tmuxinator adds an
@@ -99,7 +102,7 @@ Copy an existing project. aliased to `c`
 
     $ tmuxinator update_scripts
 
-Re-create the tmux scripts and aliases from the configs. Use this only if you edit your project configs outside of tmuxinator, i.e. not using "tmuxinator open xxx".
+Re-create the tmux and iTerm scripts and aliases from the configs. Use this only if you edit your project configs outside of tmuxinator, i.e. not using "tmuxinator open xxx".
 
 
     $ tmuxinator list
@@ -130,32 +133,6 @@ shows tmuxinator's version. aliased to `v`
 
 shows tmuxinator's help. aliased to `h`
 
-## Questions? Comments? Feature Request?
-
-I would love to hear your feedback on this project!  Send me a message!
-
-## Contributors:
-
-* [Aaron Spiegel](https://github.com/spiegela)
-* [Jay Adkisson](https://github.com/jayferd)
-* [Chris Lerum](https://github.com/chrislerum)
-* [David Bolton](https://github.com/lightningdb)
-* [Thibault Duplessis](https://github.com/ornicar)
-* [Ian Yang](https://github.com/doitian)
-* [Bjørn Arild Mæland](https://github.com/bmaland)
-
-
-## History
-###v. 0.3.0
-* added pre command (Thanks to Ian Yang)
-* added multiple pre command (Thanks to Bjørn Arild Mæland)
-* using tmux set default-path for project root
-* new aliases
-
-###v. 0.2.0
-* added pane support (Thanks to Aaron Spiegel)
-* RVM support (Thanks to Jay Adkisoon)
-
 ## Contributing to tmuxinator
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
@@ -168,4 +145,4 @@ I would love to hear your feedback on this project!  Send me a message!
 
 ## Copyright
 
-Copyright (c) 2010 Allen Bargi. See LICENSE.txt for further details.
+Copyright (c) 2010 Derek Kastner. See LICENSE.txt for further details.
